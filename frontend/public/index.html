@@ -25,6 +25,18 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+      window.addEventListener('load', async () => {
+        if (typeof window.unisat === 'undefined') {
+          console.log('Unisat wallet is not installed!');
+        }
+        if (typeof window.StacksProvider === 'undefined') {
+          console.log('Leather wallet is not installed!');
+        } else {
+          console.log('Leather wallet detected');
+        }
+      });
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

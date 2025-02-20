@@ -13,14 +13,22 @@ import {
   TokenSelect,
   TokenLogo,
   SwapButton,
-  SwitchButton
+  CardWrapper,
+  ArrowWrapper,
+  ArrowButton,
+  TokenInputWrapper,
+  EnhancedTokenSelect,
+  EnhancedSwapButton,
 } from "../styles/SwapStyles";
 
 const ConversionRate = styled.div`
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  padding: 12px;
+  padding: 16px;
   text-align: left;
+  background: rgba(21, 26, 47, 0.4);
+  border-radius: 12px;
+  margin: 12px 0;
 `;
 
 const Swap = () => {
@@ -93,13 +101,13 @@ const Swap = () => {
   };
 
   return (
-    <>
+    <CardWrapper>
       <SwapContainer>
         <SwapHeader>
           <SwapTitle>Swap</SwapTitle>
         </SwapHeader>
 
-        <TokenInput>
+        <TokenInputWrapper>
           <InputRow>
             <Input
               type="number"
@@ -113,13 +121,15 @@ const Swap = () => {
               ▼
             </TokenSelect>
           </InputRow>
-        </TokenInput>
+        </TokenInputWrapper>
 
-        <SwitchButton onClick={handleSwitch}>
-          ↓
-        </SwitchButton>
+        <ArrowWrapper>
+          <ArrowButton onClick={handleSwitch}>
+            ↓
+          </ArrowButton>
+        </ArrowWrapper>
 
-        <TokenInput>
+        <TokenInputWrapper>
           <InputRow>
             <Input
               type="number"
@@ -133,13 +143,13 @@ const Swap = () => {
               ▼
             </TokenSelect>
           </InputRow>
-        </TokenInput>
+        </TokenInputWrapper>
 
         <ConversionRate>
           {formatRate(conversionRate)}
         </ConversionRate>
 
-        <SwapButton
+        <EnhancedSwapButton
           disabled={!connected || !fromAmount}
           onClick={handleSwap}
         >
@@ -148,7 +158,7 @@ const Swap = () => {
             : !fromAmount 
               ? "Enter an amount" 
               : "Swap"}
-        </SwapButton>
+        </EnhancedSwapButton>
       </SwapContainer>
 
       <TokenSelectModal
@@ -166,7 +176,7 @@ const Swap = () => {
         selectedToken={fromToken}
         otherToken={fromToken}
       />
-    </>
+    </CardWrapper>
   );
 };
 
